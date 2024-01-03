@@ -1,19 +1,25 @@
+import { getAnimeResponse } from "@/app/libs/api-libs";
 import Listnime from "@/components/Listnime";
 import Header from "@/components/Listnime/Header";
-
-const BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
 
 const Page = async ({ params }) => {
   const { keyword } = params;
   const decodeKeyword = decodeURI(keyword);
-  const response = await fetch(`${BASE_URL}/anime?q=${decodeKeyword}`);
-  const searchNime = await response.json();
+  const searchNime = await getAnimeResponse("anime", `q=${decodeKeyword}`);
+
+  const searchResultsExist = searchNime && searchNime.data.length > 0;
 
   return (
     <>
       <section className="m-5 pb-8">
-        <Header title={`Hasil Pencarian "${decodeKeyword}"`} />
-        <Listnime api={searchNime} />
+        {searchResultsExist ? (
+          <>
+            <Header title={`Hasil Pencarian : ${decodeKeyword}`} />
+            <Listnime api={searchNime} />
+          </>
+        ) : (
+          <Header title={`Hasil Pencarian : ${decodeKeyword} Tidak Ditemukan`} />
+        )}
       </section>
     </>
   );

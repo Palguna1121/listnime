@@ -1,24 +1,23 @@
 import Listnime from "@/components/Listnime";
 import Header from "@/components/Listnime/Header";
+import { getAnimeResponse } from "./libs/api-libs";
 
-const BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
-
-const Home = async () => {
-  const response = await fetch(`${BASE_URL}/top/anime?limit=8`);
-  const listnime = await response.json();
+const Page = async () => {
+  const listmusim = await getAnimeResponse("seasons/now", "limit=8");
+  const listnime = await getAnimeResponse("top/anime", "limit=8");
 
   return (
     <>
       <section className="m-5 pb-8">
-        <Header title="Paling Populer" linkTitle={"Lihat Semua"} linkHref={"/populer"} />
-        <Listnime api={listnime} />
+        <Header title="Populer Musim ini" linkTitle={"Lihat Semua"} linkHref={"/season"} />
+        <Listnime api={listmusim} />
       </section>
       <section className="m-5 pb-8">
-        <Header title="Terbaru" linkTitle={"Lihat Semua"} linkHref={"/new"} />
+        <Header title="Paling Populer" linkTitle={"Lihat Semua"} linkHref={"/populer"} />
         <Listnime api={listnime} />
       </section>
     </>
   );
 };
 
-export default Home;
+export default Page;

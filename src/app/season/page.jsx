@@ -12,7 +12,7 @@ const Page = async () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const data = await getAnimeResponse("top/anime", `page=${page}`);
+      const data = await getAnimeResponse("seasons/now", `page=${page}`);
       setAnime(data);
     };
 
@@ -23,7 +23,7 @@ const Page = async () => {
 
   return (
     <>
-      <HeaderMenu title={`Anime Terpopuler, ${page}`} />
+      <HeaderMenu title={`Anime Musim ini, ${page}`} />
       <Listnime api={anime} />
       <Pagination page={page} last={anime.pagination?.last_visible_page} setPage={setPage} />
     </>
