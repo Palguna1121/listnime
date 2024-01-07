@@ -1,5 +1,5 @@
 "use client";
-import { getAnimeResponse } from "@/app/libs/api-libs";
+import { getAnimeResponse } from "@/libs/api-libs";
 import VideoPlayer from "@/components/Utilities/VideoPlayer";
 import Link from "next/link";
 import React, { useState } from "react";
@@ -31,15 +31,15 @@ const page = async ({ params: { id } }) => {
       <div className="h-full bg-cover bg-center bg-gray-700">
         <div className="relative h-full bg-black bg-opacity-70 flex flex-col md:flex-row gap-8 md:gap-16 pt-10 px-24 pb-8">
           <div className="detail-card overflow-hidden self-center rounded-2xl w-72">
-            <img src={anime.data.images.jpg.large_image_url} alt={`poster for ${anime.data.title}`} className="hidden md:block" />
+            <img src={anime.data?.images.jpg.large_image_url} alt={`poster for ${anime.data?.title}`} className="hidden md:block" />
           </div>
           <div className="mt-10 text-white md:flex-1">
             <div className="lg:w-12/12">
               <div className="relative">
                 <div className="mb-10">
-                  <h3 className="text-white font-bold mb-1 text-xl">{anime.data.title}</h3>
+                  <h3 className="text-white font-bold mb-1 text-xl">{anime.data?.title}</h3>
                   <span className="text-gray-400 text-sm block">
-                    {anime.data.title_japanese}, {anime.data.title}
+                    {anime.data?.title_japanese}, {anime.data?.title}
                   </span>
                 </div>
                 <div className="absolute top-0 right-0 text-center hidden md:inline">
@@ -53,7 +53,7 @@ const page = async ({ params: { id } }) => {
                       </i>{" "}
                     </span>
                     <span className="text-xm font-sans italic opacity-70">
-                      {anime.data.score ? anime.data.score.toFixed(2) : "?"} / {anime.data.scored_by}{" "}
+                      {anime.data?.score ? anime.data.score.toFixed(2) : "?"} / {anime.data?.scored_by}{" "}
                     </span>
                   </span>
                 </div>
@@ -96,14 +96,8 @@ const page = async ({ params: { id } }) => {
                       <li>
                         <span className="text-white">Scores:</span> {anime.data.score ? anime.data.score : "?"} / 10
                       </li>
-                      <li className="flex">
-                        <span className="text-white">Genre: </span>{" "}
-                        {anime.data.genres.map((genre, index) => (
-                          <span key={genre.mal_id}>
-                            {genre.name}
-                            {index < anime.data.genres.length - 1 ? ", " : ""}
-                          </span>
-                        ))}
+                      <li>
+                        <span className="text-white">Genre:</span> {anime.data.genres.map((genre) => genre.name).join(", ")}
                       </li>
                     </ul>
                   </div>

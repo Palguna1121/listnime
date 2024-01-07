@@ -1,5 +1,6 @@
 import Link from "next/link";
 import InputSearch from "./InputSearch";
+import UserActionButton from "./UserActionButton";
 
 const Navbar = () => {
   return (
@@ -29,6 +30,9 @@ const Navbar = () => {
           </div>
           <div className="form-control">
             <InputSearch />
+          </div>
+          <div>
+            <UserActionButton />
           </div>
         </div>
       </div>
