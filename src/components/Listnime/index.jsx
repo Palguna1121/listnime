@@ -7,7 +7,7 @@ const Listnime = ({ api, url }) => {
         {api.data?.map((data, index) => {
           return (
             <div key={index} className="group relative block">
-              <Link href={`anime/${data.mal_id}`} className="text-sm text-white ">
+              <Link href={`/anime/${data.mal_id}`} as={`/anime/${data.mal_id}`} className="text-sm text-white ">
                 <img alt={data.title} src={data.images.jpg.large_image_url} className="absolute inset-0 object-cover opacity-100 transition-opacity group-hover:opacity-40 h-[300px] w-full duration-500 sm:h-[400px]" />
                 <div className="relative text-left px-3">
                   <div className="mt-32 sm:mt-40 lg:mt-56">
