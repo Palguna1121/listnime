@@ -1,11 +1,9 @@
-"use client";
 import { getAnimeResponse } from "@/libs/api-libs";
 import VideoPlayer from "@/components/Utilities/VideoPlayer";
 import Link from "next/link";
-import React, { useState } from "react";
+import Synopsis from "@/components/Utilities/Synopsis";
 
 const page = async ({ params: { id } }) => {
-  const [showFullSynopsis, setShowFullSynopsis] = useState(false);
   const anime = await getAnimeResponse(`anime/${id}`);
   const characters = await getAnimeResponse(`anime/${id}/characters`);
 
@@ -18,14 +16,6 @@ const page = async ({ params: { id } }) => {
 
     return `${month} ${day}${year !== 0 ? `, ${year}` : ""}`;
   }
-
-  const truncateSynopsis = (text, maxLength = 300) => {
-    if (text.length <= maxLength) {
-      return text;
-    }
-    const truncatedText = text.slice(0, maxLength);
-    return `${truncatedText}...`;
-  };
 
   return (
     <>
@@ -58,14 +48,7 @@ const page = async ({ params: { id } }) => {
                     </span>
                   </span>
                 </div>
-                <p className="text-white">
-                  {showFullSynopsis ? anime.data.synopsis.replace("[Written by MAL Rewrite]", "") : truncateSynopsis(anime.data.synopsis.replace("[Written by MAL Rewrite]", ""))}
-                  {anime.data.synopsis.length > 300 && (
-                    <span className="cursor-pointer text-slate-400" onClick={() => setShowFullSynopsis(!showFullSynopsis)}>
-                      {showFullSynopsis ? " Lebih Sedikit" : " Lihat Selengkapnya"}
-                    </span>
-                  )}
-                </p>
+                <Synopsis anime={anime} />
                 <div className="my-12 md:flex">
                   <div className="w-full md:w-1/2">
                     <ul>
