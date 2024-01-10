@@ -13,7 +13,7 @@ const Page = async () => {
         <Header title="Populer Musim ini" linkTitle={"Lihat Semua"} linkHref={"/season"} />
         <Listnime api={listmusim} />
       </section>
-      <section className="m-5 pb-8">
+      <section className="m-5 pb-24">
         <Header title="Rekomendasi" />
         <Listnime api={recommendedAnime} />
       </section>

@@ -2,6 +2,9 @@ import { getAnimeResponse } from "@/libs/api-libs";
 import VideoPlayer from "@/components/Utilities/VideoPlayer";
 import Link from "next/link";
 import Synopsis from "@/components/Utilities/Synopsis";
+import Studio from "@/components/Listnime/detail/Studio";
+import Genre from "@/components/Listnime/detail/Genre";
+import AllChara from "@/components/Listnime/detail/AllChara";
 
 const page = async ({ params: { id } }) => {
   const anime = await getAnimeResponse(`anime/${id}`);
@@ -56,10 +59,7 @@ const page = async ({ params: { id } }) => {
                         <span className="text-white">Type:</span> {anime.data.type ? anime.data.type : "?"}, source: {anime.data.source ? anime.data.source : "?"}
                       </li>
                       <li className="flex">
-                        <span className="text-white"></span>{" "}
-                        {anime.data.studios.map((studio) => (
-                          <p key={studio.mal_id}>{`Studios: ${studio.name}`}</p>
-                        ))}
+                        <Studio anime={anime} />
                       </li>
                       <li>
                         <span className="text-white">Status:</span> {anime.data.status}
@@ -81,7 +81,7 @@ const page = async ({ params: { id } }) => {
                         <span className="text-white">Scores:</span> {anime.data.score ? anime.data.score : "?"} / 10
                       </li>
                       <li>
-                        <span className="text-white">Genre:</span> {anime.data.genres.map((genre) => genre.name).join(", ")}
+                        <Genre anime={anime} />
                       </li>
                     </ul>
                   </div>
@@ -99,19 +99,8 @@ const page = async ({ params: { id } }) => {
         <div className="flex justify-center items-center h-full bg-black bg-opacity-70 px-5">
           <VideoPlayer ytId={anime.data.trailer.youtube_id} />
         </div>
-        <div className="py-16 bg-black bg-opacity-70">
-          <h3 className="ml-10 text-2xl text-white">Characters in : {anime.data?.title}</h3>
-          <div className="grid grid-cols-4 lg:grid-cols-8 gap-4 justify-items-center mt-4 px-10">
-            {characters.data.slice(0, 16).map((c, index) => (
-              <div className="col-span-1" key={index}>
-                <div className="text-center">
-                  <img src={c.character.images.jpg.image_url} alt="" className="w-21 h-25 border border-white m-auto transition-transform transform hover:scale-105" />
-                  <div className="text-lg mt-2 text-white">{c.character.name}</div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
+
+        <AllChara anime={anime} characters={characters} />
       </div>
     </>
   );
