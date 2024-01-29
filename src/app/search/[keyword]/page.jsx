@@ -7,7 +7,7 @@ const Page = async ({ params }) => {
   const decodeKeyword = decodeURI(keyword);
   const searchNime = await getAnimeResponse("anime", `q=${decodeKeyword}`);
 
-  const searchResultsExist = searchNime && searchNime.data.length > 0;
+  const searchResultsExist = searchNime && searchNime.data?.length > 0;
 
   return (
     <>
