@@ -15,8 +15,8 @@ const Synopsis = ({ anime }) => {
   return (
     <>
       <p className="text-white">
-        {showFullSynopsis ? anime.data.synopsis.replace("[Written by MAL Rewrite]", "") : truncateSynopsis(anime.data.synopsis.replace("[Written by MAL Rewrite]", ""))}
-        {anime.data.synopsis.length > 300 && (
+        {showFullSynopsis ? anime.data?.synopsis.replace("[Written by MAL Rewrite]", "") : truncateSynopsis(anime.data?.synopsis.replace("[Written by MAL Rewrite]", ""))}
+        {anime.data?.synopsis.length > 300 && (
           <span className="cursor-pointer text-slate-400" onClick={() => setShowFullSynopsis(!showFullSynopsis)}>
             {showFullSynopsis ? " Lebih Sedikit" : " Lihat Selengkapnya"}
           </span>

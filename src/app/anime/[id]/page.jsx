@@ -47,7 +47,7 @@ const page = async ({ params: { id } }) => {
                       </i>{" "}
                     </span>
                     <span className="text-xm font-sans italic opacity-70">
-                      {anime.data?.score ? anime.data.score.toFixed(2) : "?"} / {anime.data?.scored_by}{" "}
+                      {anime.data?.score ? anime.data?.score.toFixed(2) : "?"} / {anime.data?.scored_by}{" "}
                     </span>
                   </span>
                 </div>
@@ -56,29 +56,29 @@ const page = async ({ params: { id } }) => {
                   <div className="w-full md:w-1/2">
                     <ul>
                       <li>
-                        <span className="text-white">Type:</span> {anime.data.type ? anime.data.type : "?"}, source: {anime.data.source ? anime.data.source : "?"}
+                        <span className="text-white">Type:</span> {anime.data?.type ? anime.data?.type : "?"}, source: {anime.data?.source ? anime.data?.source : "?"}
                       </li>
                       <li className="flex">
                         <Studio anime={anime} />
                       </li>
                       <li>
-                        <span className="text-white">Status:</span> {anime.data.status}
+                        <span className="text-white">Status:</span> {anime.data?.status}
                       </li>
                       <li>
-                        <span className="text-white">Date Aired:</span> {anime.data.aired.from ? formatDate(anime.data.aired.from) : "?"} to {anime.data.aired.to ? formatDate(anime.data.aired.to) : "?"}
+                        <span className="text-white">Date Aired:</span> {anime.data?.aired.from ? formatDate(anime.data?.aired.from) : "?"} to {anime.data?.aired.to ? formatDate(anime.data?.aired.to) : "?"}
                       </li>
                     </ul>
                   </div>
                   <div className="w-full md:w-1/2">
                     <ul>
                       <li>
-                        <span className="text-white">Rating:</span> {anime.data.rating ? anime.data.rating : "?"}
+                        <span className="text-white">Rating:</span> {anime.data?.rating ? anime.data?.rating : "?"}
                       </li>
                       <li>
-                        <span className="text-white">Durations:</span> {anime.data.duration ? anime.data.duration : "?"}
+                        <span className="text-white">Durations:</span> {anime.data?.duration ? anime.data?.duration : "?"}
                       </li>
                       <li>
-                        <span className="text-white">Scores:</span> {anime.data.score ? anime.data.score : "?"} / 10
+                        <span className="text-white">Scores:</span> {anime.data?.score ? anime.data?.score : "?"} / 10
                       </li>
                       <li>
                         <Genre anime={anime} />
@@ -87,7 +87,7 @@ const page = async ({ params: { id } }) => {
                   </div>
                 </div>
                 {/* <div className="mb-4">
-                  <Link href={anime.data.trailer.url || "#"} className="text-white bg-red-600 inline-block font-semibold uppercase tracking-wide px-5 py-3 rounded mr-2">
+                  <Link href={anime.data?.trailer.url || "#"} className="text-white bg-red-600 inline-block font-semibold uppercase tracking-wide px-5 py-3 rounded mr-2">
                     Trailer
                   </Link>
                 </div> */}
@@ -97,7 +97,7 @@ const page = async ({ params: { id } }) => {
         </div>
 
         <div className="flex justify-center items-center h-full bg-black bg-opacity-70 px-5">
-          <VideoPlayer ytId={anime.data.trailer.youtube_id} />
+          <VideoPlayer ytId={anime.data?.trailer.youtube_id} />
         </div>
 
         <AllChara anime={anime} characters={characters} />
