@@ -24,10 +24,10 @@ const page = async ({ params: { id } }) => {
     <>
       <div className="h-full bg-cover bg-center bg-gray-700">
         <div className="relative h-full bg-black bg-opacity-70 flex flex-col md:flex-row gap-8 md:gap-16 pt-10 px-24 pb-8">
-          <div className="detail-card overflow-hidden self-center rounded-2xl w-72">
+          <div className="detail-card overflow-hidden mt-3 md:mt-5 lg:mt-8 rounded-2xl w-72">
             <img src={anime.data?.images.jpg.large_image_url} alt={`poster for ${anime.data?.title}`} className="hidden md:block" />
           </div>
-          <div className="mt-10 text-white md:flex-1">
+          <div className="mt-3 md:mt-5 lg:mt-8 text-white md:flex-1">
             <div className="lg:w-12/12">
               <div className="relative">
                 <div className="mb-10">

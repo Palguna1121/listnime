@@ -21,7 +21,7 @@ const Pagination = ({ page, last, setPage }) => {
   };
 
   return (
-    <div className="flex justify-center items-center py-3 px-3">
+    <div className="flex justify-center items-center py-5 px-3">
       <div className="join">
         <button onClick={handlePrevPage} className="join-item btn" disabled={page === 1}>
           «
