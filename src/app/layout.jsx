@@ -7,7 +7,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
   title: "Listnime",
-  description: "na lagi belajar puh",
+  description: "web animelist dengan API dari Jikan.moe",
 };
 
 export default function RootLayout({ children }) {
